@@ -15,7 +15,8 @@ public class Main {
         //5. GIT !!!!!!!! <--- Zrobione
         //6. zmienic int na char
         //7. wywalic 0 - zamiana na znaki
-        //8. zapamietywanie pozycji 0 w celu sprawdzenia mozliwosci edytowania
+        //8. zapamietywanie pozycji 0 w celu sprawdzenia mozliwosci edytowania <- Zrobione
+        //9. blokada stringa w trakcie gry
         //------------------------------------------STILL TO DO----------------------------------------
 
         System.out.println();

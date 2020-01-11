@@ -7,6 +7,7 @@ class Board {
     private int boxSize;
     private int[][] board;
     private int[][] copyOfBoard;
+    private int[][] copyOfMazedBoard;
 
     Board(int boardSize, int difficulty) {
         this.boardSize = boardSize;
@@ -133,7 +134,7 @@ class Board {
 
     //-------------------------------------------------------USUNIECIE POL - MIEJSCE DO GRY
     void createMaze() {
-        duplicate();
+        //duplicate();
         int count = boardSize * difficulty;
         while (count != 0) {
             int cellId = generateRandomNumber(boardSize * boardSize);
@@ -154,6 +155,7 @@ class Board {
                 board[i][j] = 0;
             }
         }
+        duplicate();
     }
 
     //-------------------------------------------------------STWORZENIE KOPII TABLICY DLA POZNIEJSZEGO SPRAWDZENIA
@@ -162,15 +164,30 @@ class Board {
         for (int i = 0; i < boardSize; i++) {
             System.arraycopy(board[i], 0, copyOfBoard[i], 0, boardSize);
         }
-        /*System.out.println("_________________________");
-        for (int i = 0; i < fieldSize; i++) {
-            for (int j = 0; j < fieldSize; j++)
-                System.out.print(copyOfField[i][j] + "  ");
+        System.out.println("_________________________");
+        for (int i = 0; i < boardSize; i++) {
+            for (int j = 0; j < boardSize; j++)
+                System.out.print(copyOfBoard[i][j] + "  ");
             System.out.println();
         }
         System.out.println("_________________________");
-        System.out.println();*/
+        System.out.println();
     }
+    //-------------------------------------------------------STWORZENIE KOPII TABLICY DLA POZNIEJSZEGO SPRAWDZENIA
+//    private void duplicateAfterMaze() {
+//        //System.arraycopy(field,0,copyOfField,0,field.length);
+//        for (int i = 0; i < boardSize; i++) {
+//            System.arraycopy(board[i], 0, copyOfMazedBoard[i], 0, boardSize);
+//        }
+//        System.out.println("_________________________");
+//        for (int i = 0; i < boardSize; i++) {
+//            for (int j = 0; j < boardSize; j++)
+//                System.out.print(copyOfMazedBoard[i][j] + "  ");
+//            System.out.println();
+//        }
+//        System.out.println("_________________________");
+//        System.out.println();
+//    }
 
     //-------------------------------------------------------SPRAWDZENIE POPRAWNOSCI SUDOKU --------- BEZ PORWONANIA TABLIC!!!!!
     private boolean checkSudoku(){
@@ -291,7 +308,13 @@ class Board {
                     if ((x < 0 || x > 8) || (y < 0 || y > 8)) {
                         System.out.println("podałeś wartość poza zakresem planszy");
                     } else {
-                        if (board[x][y] != 0) {
+                        //System.out.println(copyOfBoard[x][y]);
+                        if(board[x][y] != 0 && copyOfBoard[x][y]==0){
+                            int value = Integer.parseInt(String.valueOf(tempString.charAt(2)));
+                            board[x][y] = value;
+                            //amountLeft--;
+                            System.out.println("pozostało do wypelnienia: " + amountLeft);
+                        }else if (board[x][y] != 0) {
                             //System.out.println(field[x][y]);
                             System.out.println("tego pola nie mozesz edytowac!");
                         } else {
@@ -360,7 +383,7 @@ class Board {
             System.out.print((j + 1) + "  ");
         }
         System.out.println();
-        System.out.println("Y   ________________________________      0 - zakonczenie gry oraz sprawdzenie sudoku");
+        System.out.println("Y   ________________________________     ");
 
         for (int i = 0; i < boardSize; i++) {
             if (i % 3 == 0 && i != 0) {
