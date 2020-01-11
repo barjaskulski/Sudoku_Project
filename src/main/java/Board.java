@@ -172,6 +172,7 @@ class Board {
         System.out.println();*/
     }
 
+    //-------------------------------------------------------SPRAWDZENIE POPRAWNOSCI SUDOKU --------- BEZ PORWONANIA TABLIC!!!!!
     private boolean checkSudoku(){
         return checkSudokuBox() && checkSudokuColumn() && checkSudokuRow();
     }
@@ -201,9 +202,8 @@ class Board {
                 numberToCheck=1;
             }
             //numberRepeats = 0;
-
         }
-        System.out.println("brak powtorzen w BOXIE");
+        //System.out.println("brak powtorzen w BOXIE");
         return true;
     }
 
@@ -227,7 +227,7 @@ class Board {
             }
             numberToCheck++;
         }
-        System.out.println("brak powtorzen w WIERSZU");
+        //System.out.println("brak powtorzen w WIERSZU");
         return true;
     }
 
@@ -251,7 +251,7 @@ class Board {
             }
             numberToCheck++;
         }
-        System.out.println("brak powtorzen w KOLUMNIE");
+        //System.out.println("brak powtorzen w KOLUMNIE");
         return true;
     }
 
@@ -300,13 +300,9 @@ class Board {
                             amountLeft--;
                             System.out.println("pozostało do wypelnienia: " + amountLeft);
                             if (amountLeft == 0) {
-                                if (fieldCheck() == 81) {
-                                    System.out.println("poprawnie wypelniles sudoku! gratulacje!");
-                                    break;
-                                } else {
-                                    System.out.println("bledy zostaly popelnione...");
-                                    break;
-                                }
+                                if(checkSudoku())
+                                System.out.println("poprawnie wypelniles sudoku! gratulacje!");
+                                break;
                             }
                         }
                     }
@@ -320,7 +316,7 @@ class Board {
             System.out.println();
 
             printSudoku();
-            checkSudoku();
+            //checkSudoku();
 //            checkSudokuRow();
 //            checkSudokuColumn();
 //            checkSudokuBox();
@@ -328,7 +324,7 @@ class Board {
         }
     }
 
-    //-------------------------------------------------------SPRAWDZENIE POPRAWNOSCI WYPELNIENIA CALEJ TABLICY + WYPISANIE W PRZYPADKU ZLEGO WYPELNIENIA
+    //-------------------------------------------------------SPRAWDZENIE PRZEZ PORWNANIE TABLIC + WYPISANIE W PRZYPADKU ZLEGO WYPELNIENIA
     private int fieldCheck() {
         int licznik = 0;
         for (int i = 0; i < boardSize; i++) {
