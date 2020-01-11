@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         int trudnosc=-1;
-        Field sudoku;
+        Board sudoku;
         boolean inCatch;
 
         //------------------------------------------STILL TO DO----------------------------------------
@@ -42,8 +42,8 @@ public class Main {
             System.out.print("Podaj trudność, z która chcesz się zmierzyć (1-5): ");
         }
 
-        sudoku = new Field(9, trudnosc);
-        sudoku.fillField();
+        sudoku = new Board(9, trudnosc);
+        sudoku.fillBoard();
         sudoku.createMaze();
 
         System.out.println();
