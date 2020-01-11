@@ -11,7 +11,7 @@ public class Main {
         //1. wiecej formatów inputu
         //2. dzialajace skalowanie gry, wybor wielkosci z listy
         //3. DZIALAJACY CATCH <--- Zrobione
-        //4. Sprawdzenie mozliwosci rozwiazania zadania przy roznych trybach trudnosci
+        //4. Sprawdzenie mozliwosci rozwiazania zadania przy roznych trybach trudnosci <--- Zrobione
         //5. GIT !!!!!!!! <--- Zrobione
         //6. zmienic int na char
         //7. wywalic 0 - zamiana na znaki
